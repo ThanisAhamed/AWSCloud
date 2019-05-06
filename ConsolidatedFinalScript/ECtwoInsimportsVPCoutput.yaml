@@ -1,0 +1,20 @@
+Resources:
+ HandyProBastionInstance:
+  Type: AWS::EC2::Instance
+  Properties:
+   InstanceType: t2.micro
+   KeyName: Training
+   ImageId: 'ami-02f664ededb0d5286'
+   NetworkInterfaces:
+    - AssociatePublicIpAddress: 'true'
+      DeviceIndex: "0"
+      GroupSet:
+       - !ImportValue SecurityGroupSSH
+       - !ImportValue SecurityGroupHTTP
+       - !ImportValue SecurityGroupHTTPs
+      SubnetId: !ImportValue PublicSunbettoConnect
+   Tags:
+    - Key: Name
+      Value: HandyProBastionServer
+    - Key: Project
+      Value: HandyPro	

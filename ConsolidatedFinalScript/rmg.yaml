@@ -1,0 +1,14 @@
+Resources:
+ PDQPickupVPC:
+  Type: AWS::EC2::VPC
+  Properties:
+   CidrBlock: 172.30.0.0/16 # Modify when need
+   EnableDnsHostnames: true
+   InstanceTenancy: default
+   Tags:
+    - Key: Name
+      Value: pdqpickup.com # Modify when need
+#    - Key: StackName
+#     Value: !Ref AWS::StackId	
+#    - Key: Project
+#      Value: HandyPro	

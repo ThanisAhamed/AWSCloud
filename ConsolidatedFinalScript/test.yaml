@@ -1,0 +1,6 @@
+Resources:
+ testVPC:
+  Type: AWS::EC2::VPC
+  Properties:
+   CidrBlock: 172.32.0.0/16
+   InstanceTenancy: default
