@@ -1,0 +1,44 @@
+This Contains Internet and VPC attached to it
+
+-------------------------------------------------------------------
+Sample Templates for InternetGateway:
+
+Type: AWS::EC2::InternetGateway
+Properties: 
+  Tags:
+    - Resource Tag
+	
+Sample Templates for VPC Attach to Internet
+
+Type: AWS::EC2::VPCGatewayAttachment
+Properties: 
+  InternetGatewayId: String
+  VpcId: String
+  VpnGatewayId: String
+  
+------------------------------------------------------------------------
+
+Sample for our requirement : 
+
+Resource:
+ InternetGatewayHP:
+  Type: AWS::EC2::InternetGateway
+  Properties:
+   Tags:
+    - Key: Name
+	  Value: InternetGatewayHandyPro
+    - Key: StackName
+      Value: !Ref AWS::StackId	
+	- Key: Project
+      Value: HandyPro 
+
+Resource:
+ AttachIGtoVPCHP:
+  Type: AWS::EC2::VPCGatewayAttachment
+  Properties:
+   VpcId: !Ref HandyProVPC
+   InternetGatewayId: !Ref InternetGatewayHP
+   
+----------------------------------------------------------------------
+  
+  
