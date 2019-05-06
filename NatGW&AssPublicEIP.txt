@@ -1,0 +1,39 @@
+This Contains NAT & Associate public IP connection 
+
+------------------------------------------------------------
+Sample Templates: (NATGATEWAY)
+
+Type: AWS::EC2::NatGateway
+Properties: 
+  AllocationId: String ------------>
+  SubnetId: String ----------------> both are imp
+  Tags: 
+    - Resource Tag
+	
+------------------------------------------------------------
+SAmples Templates: (EIP)
+
+Type: AWS::EC2::EIP
+Properties:
+  Domain: String --------------------> VPC very imp
+  InstanceId: String
+  PublicIpv4Pool: String
+  
+--------------------------------------------------------------
+
+Sample for NAT use if needed for HAndyPro
+
+ NatGateway:
+  Type: "AWS::EC2::NatGateway"
+  DependsOn: NatPublicIP
+  Properties: 
+   AllocationId: !GetAtt NatPublicIP.AllocationId
+   SubnetId: !Ref PublicSubnetHPro
+  
+  NatPublicIP:
+   Type: "AWS::EC2::EIP"
+   DependsOn: handyProVPC
+   Properties:
+    Domain: vpc
+	
+----------------------------------------------------------------
